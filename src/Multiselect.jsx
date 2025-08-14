@@ -115,6 +115,7 @@ export default function Multiselect({
                         <div className="p-2 relative">
                             <input
                                 ref={inputRef}
+                                id="searchInput"
                                 value={searchValue}
                                 onChange={(e) => setSearchValue(e.target.value)}
                                 placeholder="Search…"
