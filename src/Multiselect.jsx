@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import check from './assets/check.png';
+import uncheck from './assets/uncheck.png';
 
 export default function Multiselect({
     options,
@@ -173,12 +175,9 @@ export default function Multiselect({
                                             className="h-4 w-4"
                                         /> */}
 
+                                        <img src={check} className={`w-4 ${selected ? '' : 'hidden'}`}></img>
                                         <img
-                                            src="src/assets/check.png"
-                                            className={`w-4 ${selected ? '' : 'hidden'}`}
-                                        ></img>
-                                        <img
-                                            src="src/assets/uncheck.png"
+                                            src={uncheck}
                                             className={`w-4 ${selected ? 'hidden' : ''}`}
                                         ></img>
                                         <span className="text-slate-800">{opt.label}</span>
