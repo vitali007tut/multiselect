@@ -87,7 +87,7 @@ export default function Multiselect({
 
             <button
                 type="button"
-                id='expandedButton'
+                id="expandedButton"
                 className="flex w-full items-center justify-between rounded-lg border border-slate-300 bg-white px-3 py-2 text-left text-slate-900 shadow-sm hover:border-slate-400 focus:outline-none"
                 aria-haspopup="listbox"
                 aria-expanded={open}
@@ -112,14 +112,26 @@ export default function Multiselect({
             {open && (
                 <div className="relative z-10" ref={containerRef}>
                     <div className="absolute mt-2 w-full rounded-lg border border-slate-200 bg-white shadow-lg">
-                        <div className="p-2">
+                        <div className="p-2 relative">
                             <input
                                 ref={inputRef}
                                 value={searchValue}
                                 onChange={(e) => setSearchValue(e.target.value)}
                                 placeholder="Search…"
-                                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pr-9"
                             />
+
+                            {searchValue.trim() !== '' && (
+                                <button
+                                    type="button"
+                                    onClick={() => setSearchValue('')}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 h-6 w-6 rounded-full text-slate-500 hover:bg-slate-200 cursor-pointer flex items-center justify-center leading-none"
+                                    aria-label="Clear search"
+                                    title="Clear search"
+                                >
+                                    ×
+                                </button>
+                            )}
                         </div>
 
                         <ul
