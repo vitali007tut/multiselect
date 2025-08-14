@@ -35,7 +35,7 @@ export default function Multiselect({
 
     useEffect(() => {
         const onDocClick = (e) => {
-            if (!containerRef.current || e.target.closest('#expandedButton')) return;
+            // if (!containerRef.current || e.target.closest('#expandedButton')) return;
             if (!containerRef.current.contains(e.target)) {
                 setOpen(false);
             }
@@ -52,8 +52,8 @@ export default function Multiselect({
     }, [open]);
 
     return (
-        <div className="w-full max-w-xl">
-            <div className="mb-2 flex flex-wrap gap-2">
+        <div className="w-full max-w-full" ref={containerRef}>
+            <div className="mb-2 flex flex-wrap gap-2 flex-col md:flex-row justify-center items-center">
                 {selectedOptions.map((val) => {
                     const opt = options.find((o) => o.value === val);
                     const label = opt?.label ?? val;
@@ -110,7 +110,7 @@ export default function Multiselect({
             </button>
 
             {open && (
-                <div className="relative z-10" ref={containerRef}>
+                <div className="relative z-10">
                     <div className="absolute mt-2 w-full rounded-lg border border-slate-200 bg-white shadow-lg">
                         <div className="p-2 relative">
                             <input
@@ -163,14 +163,24 @@ export default function Multiselect({
                                         className={[
                                             'flex cursor-pointer items-center gap-2 px-3 py-2 text-sm',
                                             active ? 'bg-slate-100' : '',
+                                            selected ? 'hidden' : '',
                                         ].join(' ')}
                                     >
-                                        <input
+                                        {/* <input
                                             type="checkbox"
                                             readOnly
                                             checked={selected}
                                             className="h-4 w-4"
-                                        />
+                                        /> */}
+
+                                        <img
+                                            src="src/assets/check.png"
+                                            className={`w-4 ${selected ? '' : 'hidden'}`}
+                                        ></img>
+                                        <img
+                                            src="src/assets/uncheck.png"
+                                            className={`w-4 ${selected ? 'hidden' : ''}`}
+                                        ></img>
                                         <span className="text-slate-800">{opt.label}</span>
                                     </li>
                                 );

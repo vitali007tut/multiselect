@@ -28,38 +28,36 @@ export default function App() {
     }, []);
 
     return (
-        <main className="p-4 rounded-xl bg-blue-50 w-lg mt-8">
-            <h1 className="mb-6 text-2xl font-semibold">Multiselect — Timezones</h1>
+        <div className="md:w-3xl mx-auto">
+            <main className="p-4 rounded-xl bg-blue-50 mt-8 w-11/12 mx-auto">
+                <h1 className="mb-6 text-2xl font-semibold">Multiselect — Timezones</h1>
 
-            {loading && (
-                <p className="text-slate-600">
-                    Loading…
-                </p>
-            )}
-            {error && <p className="text-red-600">Couldn't load the list: {error}</p>}
+                {loading && <p className="text-slate-600">Loading…</p>}
+                {error && <p className="text-red-600">Couldn't load the list: {error}</p>}
 
-            {!loading && !error && (
-                <>
-                    <Multiselect
-                        options={options}
-                        selectedOptions={selected}
-                        onSelectionChange={setSelected}
-                        placeholder="Choose Timezones…"
-                    />
+                {!loading && !error && (
+                    <>
+                        <Multiselect
+                            options={options}
+                            selectedOptions={selected}
+                            onSelectionChange={setSelected}
+                            placeholder="Choose Timezones…"
+                        />
 
-                    <section className="mt-6">
-                        {selected.length === 0 ? (
-                            <p className="text-slate-600">Nothing is selected</p>
-                        ) : (
-                            <ul className="list-inside list-disc text-slate-800">
-                                {selected.map((v) => (
-                                    <li key={v}>{v}</li>
-                                ))}
-                            </ul>
-                        )}
-                    </section>
-                </>
-            )}
-        </main>
+                        <section className="mt-6">
+                            {selected.length === 0 ? (
+                                <p className="text-slate-600">Nothing is selected</p>
+                            ) : (
+                                <ul className="list-inside list-disc text-slate-800">
+                                    {selected.map((v) => (
+                                        <li key={v}>{v}</li>
+                                    ))}
+                                </ul>
+                            )}
+                        </section>
+                    </>
+                )}
+            </main>
+        </div>
     );
 }
